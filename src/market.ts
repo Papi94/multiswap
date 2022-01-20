@@ -30,7 +30,7 @@ async function sendTransaction(terra: LCDClient, signer: Wallet, msgs: Msg[]) {
   const tx = await signer.createAndSignTx({ msgs });
   console.log("\n" + JSON.stringify(tx) + "\n");
 
-  await promptly.confirm("Press enter to submit tx, CTRL+C to exit:");
+  await promptly.confirm("Confirm transaction before signing and broadcasting [y/N]:");
   const result = await terra.tx.broadcast(tx);
 
   if (isTxError(result)) {
