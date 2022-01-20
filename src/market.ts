@@ -28,7 +28,7 @@ const denoms = [
 
 async function sendTransaction(terra: LCDClient, signer: Wallet, msgs: Msg[]) {
   const tx = await signer.createAndSignTx({ msgs });
-  console.log("\n" + JSON.stringify(tx) + "\n");
+  console.log("\n" + JSON.stringify(tx).replace(/\\/g, "") + "\n");
 
   await promptly.confirm("Confirm transaction before signing and broadcasting [y/N]:");
   const result = await terra.tx.broadcast(tx);
